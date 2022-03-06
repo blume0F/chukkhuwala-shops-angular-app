@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>Add your shop details :)</h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="shopForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Shop Name</mat-label>
+      <input formControlName="shopName" matInput placeholder="Enter your shop name">
+      <mat-icon matSuffix>person_pin</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Shop Address</mat-label>
+      <input formControlName="shopAddress" matInput placeholder="Enter your exact shop address">
+      <mat-icon matSuffix>place</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Shop Image URL</mat-label>
+      <input formControlName="shopImage" matInput placeholder="Enter image URL for your shop">
+      <mat-icon matSuffix>insert_photo</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Mobile Number</mat-label>
+      <input formControlName="shopNumber" matInput type="number" placeholder="Enter Mobile/Telephone number">
+      <mat-icon matSuffix>contact_phone</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Shop Timings</mat-label>
+      <input formControlName="shopTimings" matInput placeholder="Enter shop opening-closing time">
+      <mat-icon matSuffix>access_time</mat-icon>
+      <mat-hint>For Ex. 9:00 AM-8:30 PM</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Shop Type</mat-label>
+      <mat-select formControlName="shopCategory" placeholder="What kind of shop?">
+          <mat-option value="Grocery">Grocery/Partune</mat-option>
+          <mat-option value="Apparels">Apparels</mat-option>
+          <mat-option value="Ornaments">Ornaments</mat-option>
+          <mat-option value="Electronic">Electronic</mat-option>
+          <mat-option value="Beauty">Beauty & Toys</mat-option>
+          <mat-option value="Vegetables/Fruit">Vegetables/Fruit</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>select_all</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Shop Details/Description</mat-label>
+      <textarea formControlName="shopDescription" matInput placeholder="Tell us more about your beautiful shop :)"></textarea>
+    </mat-form-field>
+  </form>
+</div>
+
+<div>
+  <div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left:10px" mat-raised-button color="primary" (click)="addShop()">{{actionBtn}}</button>
+</div>

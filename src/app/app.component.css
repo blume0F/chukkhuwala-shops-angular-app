@@ -1,0 +1,19 @@
+.example-spacer {
+flex: 1 1 auto;
+}
+.example-card {
+    width: 600px;
+    margin-top:50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-fx{
+max-height: 400px;
+}
+
+.mat-form-field {
+font-size: 14px;
+display: flex;
+justify-content: center;
+}

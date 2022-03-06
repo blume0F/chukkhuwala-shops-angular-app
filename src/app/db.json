@@ -1,0 +1,64 @@
+{
+"shopList": [
+    {
+    "shopName": "N.G Mart",
+    "shopAddress": "Indira Colony, Chukkuwala, Dehradun, Uttarakhand 248001",
+    "shopImage": "https://lh5.googleusercontent.com/p/AF1QipOQD7xhbyrj0WbmIrr23Fq3mgisDpsQLYBUIRee=w529-h298-k-no",
+    "shopNumber": 9917722122,
+    "shopTimings": "10am–9pm",
+    "shopCategory": "Grocery",
+    "shopDescription": "We deals not only in grocery but electronic items also, we have wide variety of products ranging from vegetables to electronic. We have strict no return policy, please keep a mind to that. We also offer online payment mode in our shop. Hope you visit us soon :]",
+    "id": 1
+    },
+    {
+    "shopName": "Anil General Store",
+    "shopAddress": "209, Indra Colony, Chukkuwala, Dehradun, Uttarakhand 248001",
+    "shopImage": "https://lh5.googleusercontent.com/p/AF1QipMesrO4yT-qCPbQp2pVH5f2cQUPJcgwIP3bE_ln=w224-h298-k-no",
+    "shopNumber": 9897027419,
+    "shopTimings": "6am–10:30pm",
+    "shopCategory": "Grocery",
+    "shopDescription": "We have wide array of grocery products. We also provide fresh cakes, paties and chilled cold drinks. Online payment is also available in our shop and we also offer (pay at the end of month hisab) facility. Come visit us",
+    "id": 2
+    },
+    {
+    "shopName": "Joshi Provision Store",
+    "shopAddress": "124, Indra Colony, Dehradun, Uttarakhand 248001",
+    "shopImage": "https://lh5.googleusercontent.com/p/AF1QipPAGPjvX15MREeGOJYeg3TYR_ZasogYgEHHZD8N=w529-h298-k-no",
+    "shopNumber": 9897004667,
+    "shopTimings": "8am–10pm",
+    "shopCategory": "Grocery",
+    "shopDescription": "We are located in the main road of chukkhuwala and we offer wide variety of grocery products that you will not find in any shop. We also have online anfd khatta book payment facility. We also deal  in dahi, paneer, sodas. Thanks for visiting us :)",
+    "id": 3
+    },
+    {
+    "shopName": "Uniyal fast food",
+    "shopAddress": "82MQ+638, Chukkuwala, Dehradun, Uttarakhand 248001",
+    "shopImage": "https://lh5.googleusercontent.com/p/AF1QipM3jxW3vMD3hKM9wJWJdxb4zsdn-5kG9iBDes7o=w596-h298-k-no",
+    "shopNumber": 7579028934,
+    "shopTimings": "11am–9pm",
+    "shopCategory": "Vegetables/Fruit",
+    "shopDescription": "Momos, chowmien, Spring Roll and all kind of fast foods are served here by heart :] and served with delightful green and red chutney. Come visit us!",
+    "id": 4
+    },
+    {
+    "shopName": "Manna Fast Food center",
+    "shopAddress": " 99/11 New basti Chukhu Wala, Dehradun, Uttarakhand 248001",
+    "shopImage": "https://lh5.googleusercontent.com/p/AF1QipOv3QW7bKeubaoRfblbq33FIGdbFuSDGzjzlTod=w408-h306-k-no",
+    "shopNumber": 8762522122,
+    "shopTimings": "8:30am–10pm",
+    "shopCategory": "Vegetables/Fruit",
+    "shopDescription": "We offer all sort of fast foods and we treat our customers like god, you can pay us through online payments system also. Dont find our food tasty? Get a refund or give us a feedback why you didnt like it :]",
+    "id": 5
+    },
+    {
+    "shopName": "Paridhan Fashion",
+    "shopAddress": "8, Neshvilla Rd, Chukkuwala, Dehradun, Uttarakhand 248001",
+    "shopImage": "https://lh5.googleusercontent.com/p/AF1QipPqk1d2_ybHEQZy3exgeHXvKlDNTZkgMGQYqm-7=w615-h298-k-no",
+    "shopNumber": 888822242,
+    "shopTimings": "9am–8pm",
+    "shopCategory": "Beauty",
+    "shopDescription": "We deals in all kind of men and women apparels!",
+    "id": 6
+    }
+]
+}

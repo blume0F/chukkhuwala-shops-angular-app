@@ -1,0 +1,58 @@
+
+<div class="header-start-section">
+  <div class="header-section">
+    <div class="header-headline">
+      <h1 class="mat-h1">Chukkhuwala Shops</h1>
+      <h2 class="mat-h2">List of all the shops around Chukkhuwala, Indra Colony - Dehradun, Uttarakhand-248001</h2>
+    </div>
+
+    <div *ngIf="afAuth.authState | async as user">
+        <h3 style="font-size:30px; color:white;"> Welcome {{user.displayName}} :) </h3>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="filter-fx">
+  <mat-form-field style="margin-left:40px;" appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Joshi Store" #input>
+  </mat-form-field>
+</div>
+
+<div >
+  <mat-card *ngFor="let data of obs | async" class="example-card" >
+      <mat-card-header>
+      <img [src]="data.shopImage" mat-card-avatar >
+      <mat-card-title>{{data.shopName}}</mat-card-title>
+      <mat-card-subtitle>{{data.shopAddress}}</mat-card-subtitle>
+      </mat-card-header>
+  
+      <img mat-card-image [src]="data.shopImage" alt="photo_of_a_shop">
+  
+      <mat-card-content>
+      <h2>Shop details :</h2>
+      <p><b>Contact</b> : {{data.shopNumber}}</p>
+      <mat-divider inset></mat-divider>
+      <p><b>Timings</b> : {{data.shopTimings}}</p>
+      <mat-divider inset></mat-divider>
+      <p><b>Deals In</b> : {{data.shopCategory}}</p>
+      <mat-divider inset></mat-divider>
+      <p><b>Shop Details</b> : {{data.shopDescription}}</p>
+  
+      </mat-card-content>
+  
+      <button mat-button color="primary" (click)="editShop(data)">
+      <mat-icon>edit</mat-icon>
+      </button>
+  
+      <button mat-button color="warn" (click)="deleteShop(data.id)">
+      <mat-icon>delete</mat-icon>
+      </button>
+  
+  </mat-card>
+</div>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

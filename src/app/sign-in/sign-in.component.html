@@ -1,0 +1,12 @@
+<div class="header-start-section">
+  <div class="header-section">
+    <div class="header-headline">
+      <h1 class="mat-h1">Want to add your beatiful shop?</h1>
+      <h2 class="mat-h2">Just click on the sign in button. It's that simple :)</h2>
+    </div>
+    <div class="header-start">
+      <button style="margin-left:10px;" mat-raised-button *ngIf="(afAuth.authState | async) === null" (click)="signIn()" color="accent">Sign In</button>
+      <button style="margin-left:10px;" mat-raised-button *ngIf="(afAuth.authState | async)" (click)="signOut()" color="basic">Sign Out</button>
+    </div>
+  </div>
+</div>

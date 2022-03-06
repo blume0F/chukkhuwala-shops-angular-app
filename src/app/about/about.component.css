@@ -1,0 +1,74 @@
+
+.header-start-section{
+overflow: hidden;
+position: relative;
+height: 300px;
+background: #3f51b5;
+}
+
+.mat-h1{ 
+font-size: 56px;
+font-weight: 700;
+line-height: 56px;
+margin: 15px 5px;
+}
+
+.mat-h2{
+font-size: 24px;
+font-weight: 300;
+line-height: 28px;
+margin: 15px 0 25px;
+display: block;
+}
+
+.header-section{
+width: 90%;
+position: absolute;
+z-index: 0;
+text-align: center;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+}
+
+.header-headline{
+color: #fff;
+display: block;
+}
+
+
+.connect-with-me {
+    color: #0000008a;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 16px 0;
+}
+
+ul{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 16px 0;
+}
+
+li {
+    display: list-item;
+}
+.connect-with-me ul li{
+    text-align: center;
+    flex: 0 1 200px;
+}
+.connect-with-met a {
+    margin: 10px auto;
+    width: 50px;
+    height: 50px;
+    color: #000000de;
+}
+a {
+    cursor: pointer;
+}

@@ -1,0 +1,36 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>Menu</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard">Home</a>
+        <a mat-list-item routerLink="/about">About</a>
+        <a mat-list-item routerLink="/signin">Sign In</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar class="mat-elevation-z10 topo" [style.margin-bottom]="'0px'"color="primary">
+        <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+
+        <span class="full-text">Chukkhuwala shops - Dehradun</span>
+        <span class="short-text">CSD</span>
+
+        <span class="example-spacer"></span>
+        <button mat-raised-button (click)="openDialog()" color="warn">Add your shop!</button>
+        <button style="margin-left:10px;" mat-raised-button *ngIf="(afAuth.authState | async) === null" (click)="signIn()" color="accent">Sign In</button>
+        <button style="margin-left:10px;" mat-raised-button *ngIf="(afAuth.authState | async)" (click)="signOut()" color="basic">Sign Out</button>
+      </mat-toolbar>
+
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
