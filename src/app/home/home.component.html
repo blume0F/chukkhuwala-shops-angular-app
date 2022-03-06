@@ -7,7 +7,8 @@
       <mat-nav-list>
         <a mat-list-item routerLink="/dashboard">Home</a>
         <a mat-list-item routerLink="/about">About</a>
-        <a mat-list-item routerLink="/signin">Sign In</a>
+        <a mat-list-item routerLink="/signin">Sign In/Sign Out</a>
+        <a (click)="openDialog()" mat-list-item >Add your shop</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

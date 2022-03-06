@@ -2,7 +2,7 @@
 .header-start-section{
 overflow: hidden;
 position: relative;
-height: 300px;
+height: 350px;
 background: #3f51b5;
 }
 
@@ -36,39 +36,53 @@ color: #fff;
 display: block;
 }
 
+.connect-top{
+color: #0000008a;
+width: 100%;
+margin: auto;
+display: flex;
+justify-content: center;
+list-style: none;
+margin: 0;
+padding: 16px;
+font-size:26px;
+font-weight: 500;
+}
 
 .connect-with-me {
-    color: #0000008a;
-    width: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    margin: 0;
-    padding: 16px 0;
+color: #0000008a;
+width: 100%;
+margin: auto;
+display: flex;
+justify-content: space-around;
+list-style: none;
+margin: 0;
+padding: 16px 0;
 }
 
 ul{
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
-    margin: 0;
-    padding: 16px 0;
+display: flex;
+justify-content: space-evenly;
+list-style: none;
+margin: 0;
+padding: 16px 0;
 }
 
 li {
-    display: list-item;
+display: list-item;
 }
+
 .connect-with-me ul li{
-    text-align: center;
-    flex: 0 1 200px;
+text-align: center;
+flex: 0 1 200px;
 }
+
 .connect-with-met a {
-    margin: 10px auto;
-    width: 50px;
-    height: 50px;
-    color: #000000de;
+margin: 10px auto;
+width: 50px;
+height: 50px;
+color: #000000de;
 }
 a {
-    cursor: pointer;
+cursor: pointer;
 }

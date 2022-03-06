@@ -10,3 +10,7 @@
     </div>
   </div>
 </div>
+
+<div style="margin:40px;" *ngIf="(afAuth.authState | async)">
+  <mat-card style="font-size:20px;font-weight: 400;"> Looks like you are already Signed In! Click on the Add your shop button at the top to add your shop :) </mat-card>
+</div>
