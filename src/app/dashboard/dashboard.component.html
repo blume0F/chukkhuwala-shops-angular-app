@@ -14,8 +14,11 @@
 
 
 
+<div class="filter-search">
+  <mat-card style="background: #3f51b5; color:white">Search a shop</mat-card>
+</div>
 
-<div class="filter-fx">
+<div class="filter-fx" style="margin-bottom:50px;">
   <mat-form-field style="margin-left:40px;" appearance="standard">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Joshi Store" #input>
@@ -43,15 +46,16 @@
       <p><b>Shop Details</b> : {{data.shopDescription}}</p>
   
       </mat-card-content>
-  
-      <button mat-button color="primary" (click)="editShop(data)">
-      <mat-icon>edit</mat-icon>
-      </button>
-  
-      <button mat-button color="warn" (click)="deleteShop(data.id)">
-      <mat-icon>delete</mat-icon>
-      </button>
-  
+
+      <div *ngIf="afAuth.authState | async as user">
+        <button mat-button color="primary" (click)="editShop(data)">
+        <mat-icon>edit</mat-icon>
+        </button>
+    
+        <button mat-button color="warn" (click)="deleteShop(data.id)">
+        <mat-icon>delete</mat-icon>
+        </button>
+      </div>
   </mat-card>
 </div>
 

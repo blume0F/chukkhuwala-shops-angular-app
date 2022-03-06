@@ -1,13 +1,4 @@
 {
-  "targets": {
-    "chukkhuwala": {
-      "hosting": {
-        "chukkhuwala": [
-          "chukkhuwala"
-        ]
-      }
-    }
-  },
   "projects": {
     "default": "chukkhuwala"
   }

@@ -45,6 +45,16 @@
   background: #3f51b5;
 }
 
+.filter-search{
+  width: auto;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  font-size:26px;
+  font-weight: 400;
+}
+
 .mat-h1{ 
   font-size: 56px;
   font-weight: 700;

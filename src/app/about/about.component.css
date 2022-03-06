@@ -38,12 +38,12 @@ display: block;
 
 .connect-top{
 color: #0000008a;
-width: 100%;
+width: auto;
 margin: auto;
 display: flex;
 justify-content: center;
 list-style: none;
-margin: 0;
+margin-top: 100px;
 padding: 16px;
 font-size:26px;
 font-weight: 500;
