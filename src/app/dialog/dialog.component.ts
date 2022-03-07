@@ -2,6 +2,12 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShopService } from '../services/shop.service';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
+
+export interface Category {
+  type: string;
+}
 
 @Component({
   selector: 'app-dialog',
@@ -11,6 +17,11 @@ import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DialogComponent implements OnInit {
   shopForm:FormGroup;
   actionBtn:string='Save';
+  addOnBlur = true;
+  visible=true;
+  selectable=true;
+  removable=true;
+  readonly separatorKeysCodes:number[] = [ENTER, COMMA];
   constructor(@Inject(MAT_DIALOG_DATA) public editData:any,private formbuilder:FormBuilder,private shopservice:ShopService,private dialogref:MatDialogRef<DialogComponent>) { }
 
   ngOnInit(): void {
@@ -20,7 +31,7 @@ export class DialogComponent implements OnInit {
       shopImage:['',Validators.required],
       shopNumber:['',Validators.required],
       shopTimings:['',Validators.required],
-      shopCategory:['',Validators.required],
+      shopCategory:[[],Validators.required],
       shopDescription:['',Validators.required],
     })
     if(this.editData){
@@ -35,19 +46,52 @@ export class DialogComponent implements OnInit {
     }
   }
 
+  get categories(){
+    return this.shopForm.get('shopCategory');
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our category
+    if ((value || '').trim()) {
+      this.categories.setValue([...this.categories.value,value.trim()]);
+      this.categories.updateValueAndValidity();
+    }
+
+    if(input){
+      input.value='';
+    }
+  }
+
+  remove(category: string): void {
+    const index = this.categories.value.indexOf(category);
+
+    if (index >= 0) {
+      this.categories.value.splice(index,1);
+      this.categories.updateValueAndValidity();
+    }
+  }
+
   addShop(){
-    if(!this.editData){
-      this.shopservice.saveProduct(this.shopForm.value).subscribe((res)=>{
-        alert('Post saved successfully');
-        this.shopForm.reset();
-        this.dialogref.close('save');
-      }),
-      error=>{
-        alert('Your post did not saved successfully')
-      }
+    if(this.shopForm.invalid){
+      return;
     }
     else{
-      this.updateShop();
+      if(!this.editData){
+        this.shopservice.saveProduct(this.shopForm.value).subscribe((res)=>{
+          alert('Post saved successfully');
+          this.shopForm.reset();
+          this.dialogref.close('save');
+        }),
+        error=>{
+          alert('Your post did not saved successfully')
+        }
+      }
+      else{
+        this.updateShop();
+      }
     }
   }
 

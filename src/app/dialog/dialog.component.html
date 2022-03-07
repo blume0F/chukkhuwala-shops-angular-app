@@ -31,20 +31,24 @@
       <input formControlName="shopTimings" matInput placeholder="Enter shop opening-closing time">
       <mat-icon matSuffix>access_time</mat-icon>
       <mat-hint>For Ex. 9:00 AM-8:30 PM</mat-hint>
-    </mat-form-field>
+    </mat-form-field><br><br>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Shop Type</mat-label>
-      <mat-select formControlName="shopCategory" placeholder="What kind of shop?">
-          <mat-option value="Grocery">Grocery/Partune</mat-option>
-          <mat-option value="Apparels">Apparels</mat-option>
-          <mat-option value="Ornaments">Ornaments</mat-option>
-          <mat-option value="Electronic">Electronic</mat-option>
-          <mat-option value="Beauty">Beauty & Toys</mat-option>
-          <mat-option value="Vegetables/Fruit">Vegetables/Fruit</mat-option>
-      </mat-select>
+    <mat-form-field class="example-chip-list" appearance="fill">
+      <mat-label>Shop Category/Type</mat-label>
+      <mat-chip-list #chipList aria-label="Category selection" formControlName="shopCategory">
+        <mat-chip *ngFor="let category of categories.value" (removed)="remove(category)">
+          {{category}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="New category..."
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
       <mat-icon matSuffix>select_all</mat-icon>
-    </mat-form-field>
+      <mat-hint>Type at least one category For Ex. Apparel, Grocery</mat-hint>
+    </mat-form-field><br><br>
 
     <mat-form-field appearance="outline">
       <mat-label>Shop Details/Description</mat-label>

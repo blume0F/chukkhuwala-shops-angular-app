@@ -45,6 +45,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatListModule,
     MatGridListModule,
     MatMenuModule,
+    MatChipsModule
     // provideAnalytics(() => getAnalytics()),
     // provideAuth(() => getAuth()),
     // provideDatabase(() => getDatabase()),
