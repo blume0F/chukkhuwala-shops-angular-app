@@ -4,6 +4,9 @@ import { ShopService } from '../services/shop.service';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorage, AngularFireStorageModule, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/compat/storage';
+import { finalize, map, Observable } from 'rxjs';
 
 export interface Category {
   type: string;
@@ -15,14 +18,26 @@ export interface Category {
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
+
   shopForm:FormGroup;
   actionBtn:string='Save';
+  profileUrl: Observable<string | null>;
   addOnBlur = true;
   visible=true;
   selectable=true;
   removable=true;
+  ref: AngularFireStorageReference;
+  task: AngularFireUploadTask;
   readonly separatorKeysCodes:number[] = [ENTER, COMMA];
-  constructor(@Inject(MAT_DIALOG_DATA) public editData:any,private formbuilder:FormBuilder,private shopservice:ShopService,private dialogref:MatDialogRef<DialogComponent>) { }
+  uploadState: Observable<unknown>;
+  uploadProgress: Observable<number>;
+  downloadURL: Observable<any>;
+
+  constructor(private afStorage: AngularFireStorage,
+    @Inject(MAT_DIALOG_DATA) public editData:any,
+    private formbuilder:FormBuilder,
+    private shopservice:ShopService,
+    private dialogref:MatDialogRef<DialogComponent>) {}
 
   ngOnInit(): void {
     this.shopForm=this.formbuilder.group({
@@ -45,6 +60,27 @@ export class DialogComponent implements OnInit {
       this.shopForm.controls['shopDescription'].setValue(this.editData.shopDescription);
     }
   }
+
+  upload(event) {
+    const id = Math.random().toString(36).substring(2);
+    const file = event.target.files[0];
+    let filePath = id;
+    this.ref = this.afStorage.ref(id);
+    this.task = this.afStorage.upload(filePath, file);
+    this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
+    this.uploadProgress = this.task.percentageChanges();
+    this.task.snapshotChanges().pipe(
+      finalize(() => {
+        this.ref.getDownloadURL().subscribe(url => {
+          this.shopForm.patchValue({
+            shopImage:url
+          })
+        });
+      })
+    ).subscribe();
+    
+  }
+  
 
   get categories(){
     return this.shopForm.get('shopCategory');

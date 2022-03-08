@@ -60,12 +60,14 @@ export class DashboardComponent {
   }
 
   deleteShop(id:number){
-    this.shopservice.deleteShop(id).subscribe((res)=>{
-      alert('Shop deleted successfully');
-      this.getAllShops();
-    }),
-    error=>{
-      alert('Shop was not deleted successfully');
+    if(confirm('Are you sure you want to delete the shop?')){
+      this.shopservice.deleteShop(id).subscribe((res)=>{
+        alert('Shop deleted successfully');
+        this.getAllShops();
+      }),
+      error=>{
+        alert('Shop was not deleted successfully');
+      }
     }
   }
 

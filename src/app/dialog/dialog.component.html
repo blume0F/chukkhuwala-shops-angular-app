@@ -14,12 +14,18 @@
       <mat-icon matSuffix>place</mat-icon>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Shop Image URL</mat-label>
-      <input formControlName="shopImage" matInput placeholder="Enter image URL for your shop">
-      <mat-icon matSuffix>insert_photo</mat-icon>
-    </mat-form-field>
-
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          Upload a image of your shop.
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Select a file for upload:</h5>
+          <input id="file-upload" type="file" (change)="upload($event)" accept="image/*"/>
+        </div>
+      </div>
+    </div><br>
+    
     <mat-form-field appearance="outline">
       <mat-label>Mobile Number</mat-label>
       <input formControlName="shopNumber" matInput type="number" placeholder="Enter Mobile/Telephone number">
@@ -60,5 +66,5 @@
 <div>
   <div mat-dialog-action [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button style="margin-left:10px" mat-raised-button color="primary" (click)="addShop()">{{actionBtn}}</button>
+    <button [disabled]="shopForm.invalid" style="margin-left:10px" mat-raised-button color="primary" (click)="addShop()">{{actionBtn}}</button>
 </div>
