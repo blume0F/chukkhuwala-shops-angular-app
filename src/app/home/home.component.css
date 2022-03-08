@@ -21,6 +21,11 @@ justify-content: center;
 height: 100%;
 }
 
+.is-active {
+    background: #3f51b5 !important;;
+    color:white
+}
+
 .sidenav {
 width: 200px;
 }

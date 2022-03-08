@@ -9,6 +9,9 @@
     <div *ngIf="afAuth.authState | async as user">
         <h3 style="font-size:30px; color:white;"> Welcome! {{user.displayName}}</h3>
     </div>
+    <div *ngIf="(afAuth.authState | async) === null">
+      <h3 style="font-size:30px; color:white;"> Welcome!</h3>
+  </div>
   </div>
 </div>
 
@@ -36,15 +39,17 @@
       <img mat-card-image [src]="data.shopImage" alt="photo_of_a_shop">
   
       <mat-card-content>
+
       <h2>Shop details :</h2>
-      <p><b>Contact</b> : {{data.shopNumber}}</p>
-      <mat-divider inset></mat-divider>
-      <p><b>Timings</b> : {{data.shopTimings}}</p>
-      <mat-divider inset></mat-divider>
-      <p><b>Deals In</b> : {{data.shopCategory}}</p>
-      <mat-divider inset></mat-divider>
-      <p><b>Shop Details</b> : {{data.shopDescription}}</p>
-  
+      <div style="font-size:16px;">
+        <div class="mat-list-fix"><p><b>Phone Number</b> : {{data.shopNumber}}</p></div>
+        <mat-divider ></mat-divider>
+        <div class="mat-list-fix"><p><b>Timings</b> : {{data.shopTimings}}</p></div>
+        <mat-divider></mat-divider>
+        <div class="mat-list-fix"><p><b>Category</b> : {{data.shopCategory}}</p></div>
+        <mat-divider></mat-divider>
+        <div class="mat-list-fix"><p><b>About Shop</b> : {{data.shopDescription}}</p></div>
+      </div>
       </mat-card-content>
 
       <div *ngIf="afAuth.authState | async as user">

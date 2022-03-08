@@ -49,6 +49,12 @@ font-size:26px;
 font-weight: 500;
 }
 
+.zoom:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
+}
+
 .connect-with-me {
 color: #0000008a;
 width: 100%;

@@ -38,6 +38,12 @@
   margin-right:auto;  
 }
 
+.mat-list-fix{
+padding-bottom:2px;
+padding-top:14px;
+}
+
+
 .header-start-section{
   overflow: hidden;
   position: relative;
