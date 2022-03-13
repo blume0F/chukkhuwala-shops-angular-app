@@ -8,6 +8,8 @@ shopImage:string,
 shopNumber:number,
 shopTimings:string,
 shopCategory:string,
-shopDescription:string
+shopDescription:string,
+userImage:string,
+userName:string,
 }
   

@@ -91,7 +91,13 @@ padding-top:14px;
   display: block;
 }
 
-/* .header-start{
-  text-align: center;
-  margin: 50px 0 0;
-} */
+.postedby-heading{
+display:inline-flex;
+padding-bottom:2px;
+padding-top:14px;
+}
+
+.postedby-image{
+margin-left:10px;
+margin-top:-5px;
+}

@@ -40,8 +40,9 @@
   
       <mat-card-content>
 
-      <h2>Shop details :</h2>
+      <h1>Shop details :</h1>
       <div style="font-size:16px;">
+
         <div class="mat-list-fix"><p><b>Phone Number</b> : {{data.shopNumber}}</p></div>
         <mat-divider ></mat-divider>
         <div class="mat-list-fix"><p><b>Timings</b> : {{data.shopTimings}}</p></div>
@@ -49,6 +50,20 @@
         <div class="mat-list-fix"><p><b>Category</b> : {{data.shopCategory}}</p></div>
         <mat-divider></mat-divider>
         <div class="mat-list-fix"><p><b>About Shop</b> : {{data.shopDescription}}</p></div>
+        <mat-divider></mat-divider>
+        
+        <div class="postedby-heading">
+          <div style="margin-top:5px;">
+            <b>Posted by : </b> 
+          </div>
+          <div class="postedby-image" >
+            <img [src]="data.userImage" mat-card-avatar >
+          </div>
+          <div style="margin-left:10px;margin-top:5px;">
+            <p>{{data.userName}}</p>
+          </div>
+        </div>
+
       </div>
       </mat-card-content>
 

@@ -35,6 +35,8 @@ export class DialogComponent implements OnInit {
   downloadURL: Observable<any>;
   uid:any;
   authState: any = null;
+  userName:any;
+  userImage:any;
 
   constructor(private afStorage: AngularFireStorage,
     @Inject(MAT_DIALOG_DATA) public editData:any,
@@ -42,13 +44,17 @@ export class DialogComponent implements OnInit {
     private shopservice:ShopService,
     private dialogref:MatDialogRef<DialogComponent>,public afAuth:AngularFireAuth) {
       this.afAuth.authState.subscribe(user => {
-        if(user) this.uid = user.uid
+        if(user){
+          this.uid = user.uid
+          this.userName= user.displayName;
+          this.userImage= user.photoURL;
+        }
       }) 
     }
 
   ngOnInit(): void {
     this.shopForm=this.formbuilder.group({
-      uid:[''],
+      uid:['',Validators.required],
       shopName:['',Validators.required],
       shopAddress:['',Validators.required],
       shopImage:['',Validators.required],
@@ -56,9 +62,13 @@ export class DialogComponent implements OnInit {
       shopTimings:['',Validators.required],
       shopCategory:[[],Validators.required],
       shopDescription:['',Validators.required],
+      userImage:['',Validators.required],
+      userName:['',Validators.required]
     })
     if(this.editData){
       this.actionBtn='Update';
+      this.shopForm.controls['userImage'].setValue(this.editData.profileImage);
+      this.shopForm.controls['userName'].setValue(this.editData.profileName);
       this.shopForm.controls['uid'].setValue(this.editData.uid);
       this.shopForm.controls['shopName'].setValue(this.editData.shopName);
       this.shopForm.controls['shopAddress'].setValue(this.editData.shopAddress);
@@ -83,12 +93,13 @@ export class DialogComponent implements OnInit {
         this.ref.getDownloadURL().subscribe(url => {
           this.shopForm.patchValue({
             shopImage:url,
-            uid:this.uid
+            uid:this.uid,
+            userName:this.userName,
+            userImage:this.userImage
           })
         });
       })
     ).subscribe();
-    
   }
   
 
