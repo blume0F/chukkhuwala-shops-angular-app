@@ -3,12 +3,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator} from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { DialogComponent } from '../dialog/dialog.component';
-import { ShopService } from '../services/shop.service';
+import { ShopService } from '../../services/shop.service';
 import { MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { Shop } from '../model/shop';
+import { Shop } from '../../model/shop';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -31,6 +31,7 @@ export class DashboardComponent {
     shareReplay()
   );
   uid:any;
+  noShopEntries:boolean=false;
 
   constructor(private breakpointObserver: BreakpointObserver,private dialog:MatDialog,private shopservice:ShopService,public afAuth:AngularFireAuth,public router:Router){
     this.afAuth.authState.subscribe(user => {
@@ -44,10 +45,15 @@ export class DashboardComponent {
 
   getAllShops(){
     this.shopservice.getProduct().subscribe((res:any)=>{
-      this.dataSource=new MatTableDataSource(res);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort=this.sort;
-      this.obs = this.dataSource.connect();
+      if(res.length==0){
+        this.noShopEntries=true;
+      }
+      else{
+        this.dataSource=new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort=this.sort;
+        this.obs = this.dataSource.connect();
+      }
     },error=>{
       alert('Some error occurred while fetching Shops :[')
     })

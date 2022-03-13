@@ -1,11 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ShopService } from '../services/shop.service';
+import { ShopService } from '../../services/shop.service';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireStorage, AngularFireStorageModule, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/compat/storage';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/compat/storage';
 import { finalize, map, Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 

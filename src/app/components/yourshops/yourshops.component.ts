@@ -1,25 +1,23 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator} from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { DialogComponent } from '../dialog/dialog.component';
-import { ShopService } from '../services/shop.service';
+import { ShopService } from '../../services/shop.service';
 import { MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
-import { Shop } from '../model/shop';
+import { Shop } from '../../model/shop';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-yourshops',
+  templateUrl: './yourshops.component.html',
+  styleUrls: ['./yourshops.component.css']
 })
-export class HomeComponent implements OnInit {
-  title = 'chukkhuwala';
+export class YourshopsComponent implements OnInit {
   shopData:any=[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -31,47 +29,39 @@ export class HomeComponent implements OnInit {
     map(result => result.matches),
     shareReplay()
   );
+  uid:any;
+  uidname:any;
+  noShopEntries: boolean=false;
 
-  constructor(private breakpointObserver: BreakpointObserver,private dialog:MatDialog,private shopservice:ShopService,public afAuth:AngularFireAuth,public router:Router){}
-
-  ngOnInit(): void {
-    this.getAllShops();
+  constructor(private breakpointObserver: BreakpointObserver,private dialog:MatDialog,private shopservice:ShopService,public afAuth:AngularFireAuth,public router:Router){
+    this.afAuth.authState.subscribe(user => {
+      if(user){
+        this.uid = user.uid;
+        this.uidname=user.displayName;
+      } 
+    }) 
   }
 
-
-  signIn(){
-    const googleAuthProvider=new firebase.auth.GoogleAuthProvider();
-    this.afAuth.signInWithPopup(googleAuthProvider);
-  }
-
-  signOut(){
-    this.afAuth.signOut();
-  }
-
-  async openDialog() {
-    const user = await this.afAuth.currentUser;
-    const isAuthenticated = user ? true: false;
-
-    if(!isAuthenticated){
-      this.router.navigate(['signin'])
-    }
-    else{
-      this.dialog.open(DialogComponent, {
-        width:'100%',
-      }).afterClosed().subscribe(val=>{
-        if(val==='save'){
-          this.getAllShops();
-        }
-      })
-    }
+  ngOnInit():void {
+    this.afAuth.authState.subscribe(user => {
+      if(user){
+        this.getAllShops();
+      } 
+    }) 
   }
 
   getAllShops(){
-    this.shopservice.getProduct().subscribe((res:any)=>{
-      this.dataSource=new MatTableDataSource(res);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort=this.sort;
-      this.obs = this.dataSource.connect();
+    this.shopservice.getUserShops().subscribe((res:any)=>{
+      if(res.length===0){
+        this.noShopEntries=true;
+      }
+      else{
+        this.noShopEntries=false;
+        this.dataSource=new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort=this.sort;
+        this.obs = this.dataSource.connect();
+      }
     },error=>{
       alert('Some error occurred while fetching Shops :[')
     })
@@ -89,12 +79,14 @@ export class HomeComponent implements OnInit {
   }
 
   deleteShop(id:number){
-    this.shopservice.deleteShop(id).subscribe((res)=>{
-      alert('Shop deleted successfully');
-      this.getAllShops();
-    }),
-    error=>{
-      alert('Shop was not deleted successfully');
+    if(confirm('Are you sure you want to delete the shop?')){
+      this.shopservice.deleteShop(id).subscribe((res)=>{
+        alert('Shop deleted successfully');
+        this.getAllShops();
+      }),
+      error=>{
+        alert('Shop was not deleted successfully');
+      }
     }
   }
 

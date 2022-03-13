@@ -8,8 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { DialogComponent } from './dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -35,17 +35,17 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {MatChipsModule} from '@angular/material/chips';
-import { YourshopsComponent } from './yourshops/yourshops.component';
+import { YourshopsComponent } from './components/yourshops/yourshops.component';
 
 
 @NgModule({

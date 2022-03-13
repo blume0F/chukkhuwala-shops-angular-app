@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DialogComponent } from './dialog/dialog.component';
+import { AboutComponent } from './components/about/about.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 import { AuthGuard } from './guards/auth.guard';
-import { HomeComponent } from './home/home.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { YourshopsComponent } from './yourshops/yourshops.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { YourshopsComponent } from './components/yourshops/yourshops.component';
 
 const routes: Routes = [
   {path:'signin',component:SignInComponent},
