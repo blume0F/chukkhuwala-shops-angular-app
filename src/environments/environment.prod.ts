@@ -1,14 +1,14 @@
 export const environment = {
   production: true,
   firebase: {
-    projectId: 'chukkhuwala',
-    appId: '1:591305914701:web:c182d5b212b0e39ed29f04',
-    databaseURL: 'https://chukkhuwala-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'chukkhuwala.appspot.com',
-    locationId: 'asia-northeast2',
-    apiKey: 'AIzaSyCp0Qv-ZXlseb55O1IBTjSCTaMccl9iaD8',
-    authDomain: 'chukkhuwala.firebaseapp.com',
-    messagingSenderId: '591305914701',
-    measurementId: 'G-X27797G1R0',
+    projectId: 'Put your configs here to work',
+    appId: 'Put your configs here to work',
+    databaseURL: 'Put your configs here to work',
+    storageBucket: 'Put your configs here to work',
+    locationId: 'Put your configs here to work',
+    apiKey: 'Put your configs here to work',
+    authDomain: 'Put your configs here to work',
+    messagingSenderId: 'Put your configs here to work',
+    measurementId: 'Put your configs here to work',
   },
 };
