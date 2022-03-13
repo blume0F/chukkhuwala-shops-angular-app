@@ -20,8 +20,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
+
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
@@ -46,6 +45,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { YourshopsComponent } from './yourshops/yourshops.component';
 
 
 @NgModule({
@@ -56,6 +56,7 @@ import {MatChipsModule} from '@angular/material/chips';
     HomeComponent,
     AboutComponent,
     DashboardComponent,
+    YourshopsComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,16 +85,16 @@ import {MatChipsModule} from '@angular/material/chips';
     MatListModule,
     MatGridListModule,
     MatMenuModule,
-    MatChipsModule
-    // provideAnalytics(() => getAnalytics()),
-    // provideAuth(() => getAuth()),
-    // provideDatabase(() => getDatabase()),
-    // provideFirestore(() => getFirestore()),
-    // provideFunctions(() => getFunctions()),
-    // provideMessaging(() => getMessaging()),
-    // providePerformance(() => getPerformance()),
-    // provideRemoteConfig(() => getRemoteConfig()),
-    // provideStorage(() => getStorage())
+    MatChipsModule,
+    provideAnalytics(() => getAnalytics()),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions()),
+    provideMessaging(() => getMessaging()),
+    providePerformance(() => getPerformance()),
+    provideRemoteConfig(() => getRemoteConfig()),
+    provideStorage(() => getStorage())
   ],
   providers: [ShopService, ScreenTrackingService,UserTrackingService],
   bootstrap: [AppComponent]

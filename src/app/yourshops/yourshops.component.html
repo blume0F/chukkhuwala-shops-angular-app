@@ -1,0 +1,70 @@
+
+<div class="header-start-section">
+    <div class="header-section">
+      <div class="header-headline">
+        <h1 class="mat-h1">My Shops</h1>
+        <h2 *ngIf="(afAuth.authState | async)" class="mat-h2">List of all the shops posted by {{uidname}}</h2>
+        <h2 *ngIf="(afAuth.authState | async) === null" class="mat-h2">You must be logged in to view your shop</h2>
+      </div>  
+    </div>
+</div>
+  
+  
+<div *ngIf="(afAuth.authState | async) && noShopEntries===false" >
+  <div class="filter-search">
+    <mat-card style="background: #3f51b5; color:white">Search your shop</mat-card>
+  </div>
+  
+  <div class="filter-fx" style="margin-bottom:50px;">
+    <mat-form-field style="margin-left:40px;" appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Joshi Store" #input>
+    </mat-form-field>
+  </div>
+  
+  <div>
+    <mat-card *ngFor="let data of obs | async" class="example-card" >
+        <mat-card-header>
+        <img [src]="data.shopImage" mat-card-avatar >
+        <mat-card-title>{{data.shopName}}</mat-card-title>
+        <mat-card-subtitle>{{data.shopAddress}}</mat-card-subtitle>
+        </mat-card-header>
+    
+        <img mat-card-image [src]="data.shopImage" alt="photo_of_a_shop">
+    
+        <mat-card-content>
+  
+        <h2>Shop details :</h2>
+        <div style="font-size:16px;">
+          <div class="mat-list-fix"><p><b>Phone Number</b> : {{data.shopNumber}}</p></div>
+          <mat-divider ></mat-divider>
+          <div class="mat-list-fix"><p><b>Timings</b> : {{data.shopTimings}}</p></div>
+          <mat-divider></mat-divider>
+          <div class="mat-list-fix"><p><b>Category</b> : {{data.shopCategory}}</p></div>
+          <mat-divider></mat-divider>
+          <div class="mat-list-fix"><p><b>About Shop</b> : {{data.shopDescription}}</p></div>
+        </div>
+        </mat-card-content>
+  
+        <div *ngIf="(afAuth.authState | async) && (data.uid===uid)">
+            <button style="margin-right:10px;"  mat-raised-button (click)="editShop(data)" color="primary">Edit
+              <mat-icon>edit</mat-icon>
+            </button>
+    
+            <button mat-raised-button (click)="deleteShop(data.id)" color="warn">Delete
+              <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+  </div>
+  
+  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+</div>
+
+<div *ngIf="(afAuth.authState | async) && noShopEntries==true">
+    <mat-card style="font-size:20px;font-weight: 400;"> You have not added any shops yet! Click on the Add you shop button at the top to add your shop.</mat-card>
+</div>
+
+<div *ngIf="(afAuth.authState | async) === null">
+    <mat-card style="font-size:20px;font-weight: 400;"> Looks like you are not Signed In! Sign In to view your shops</mat-card>
+</div>

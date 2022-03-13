@@ -52,16 +52,16 @@
       </div>
       </mat-card-content>
 
-      <div *ngIf="afAuth.authState | async as user">
-        <button mat-button color="primary" (click)="editShop(data)">
-        <mat-icon>edit</mat-icon>
+      <div *ngIf="(afAuth.authState | async) && (data.uid===uid)">
+        <button style="margin-right:10px;"  mat-raised-button (click)="editShop(data)" color="primary">Edit
+          <mat-icon>edit</mat-icon>
         </button>
-    
-        <button mat-button color="warn" (click)="deleteShop(data.id)">
-        <mat-icon>delete</mat-icon>
+
+        <button mat-raised-button (click)="deleteShop(data.id)" color="warn">Delete
+          <mat-icon>delete</mat-icon>
         </button>
       </div>
   </mat-card>
 </div>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>

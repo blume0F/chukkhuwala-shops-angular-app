@@ -6,9 +6,11 @@ import { DialogComponent } from './dialog/dialog.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { YourshopsComponent } from './yourshops/yourshops.component';
 
 const routes: Routes = [
   {path:'signin',component:SignInComponent},
+  {path:'myshops',component:YourshopsComponent},
   {path:'about',component:AboutComponent},
   {path:'dashboard',component:DashboardComponent},
   {path:'addshop',component:DialogComponent,canActivate:[AuthGuard]},

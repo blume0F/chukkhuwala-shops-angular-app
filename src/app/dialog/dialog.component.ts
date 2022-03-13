@@ -7,6 +7,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorage, AngularFireStorageModule, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/compat/storage';
 import { finalize, map, Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 export interface Category {
   type: string;
@@ -32,15 +33,22 @@ export class DialogComponent implements OnInit {
   uploadState: Observable<unknown>;
   uploadProgress: Observable<number>;
   downloadURL: Observable<any>;
+  uid:any;
+  authState: any = null;
 
   constructor(private afStorage: AngularFireStorage,
     @Inject(MAT_DIALOG_DATA) public editData:any,
     private formbuilder:FormBuilder,
     private shopservice:ShopService,
-    private dialogref:MatDialogRef<DialogComponent>) {}
+    private dialogref:MatDialogRef<DialogComponent>,public afAuth:AngularFireAuth) {
+      this.afAuth.authState.subscribe(user => {
+        if(user) this.uid = user.uid
+      }) 
+    }
 
   ngOnInit(): void {
     this.shopForm=this.formbuilder.group({
+      uid:[''],
       shopName:['',Validators.required],
       shopAddress:['',Validators.required],
       shopImage:['',Validators.required],
@@ -51,6 +59,7 @@ export class DialogComponent implements OnInit {
     })
     if(this.editData){
       this.actionBtn='Update';
+      this.shopForm.controls['uid'].setValue(this.editData.uid);
       this.shopForm.controls['shopName'].setValue(this.editData.shopName);
       this.shopForm.controls['shopAddress'].setValue(this.editData.shopAddress);
       this.shopForm.controls['shopImage'].setValue(this.editData.shopImage);
@@ -73,7 +82,8 @@ export class DialogComponent implements OnInit {
       finalize(() => {
         this.ref.getDownloadURL().subscribe(url => {
           this.shopForm.patchValue({
-            shopImage:url
+            shopImage:url,
+            uid:this.uid
           })
         });
       })

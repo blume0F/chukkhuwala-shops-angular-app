@@ -1,4 +1,4 @@
-import { Component,ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator} from '@angular/material/paginator';
 import { Observable } from 'rxjs';
@@ -12,13 +12,12 @@ import { Shop } from '../model/shop';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 
-
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-yourshops',
+  templateUrl: './yourshops.component.html',
+  styleUrls: ['./yourshops.component.css']
 })
-export class DashboardComponent {
+export class YourshopsComponent implements OnInit {
   shopData:any=[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -31,23 +30,38 @@ export class DashboardComponent {
     shareReplay()
   );
   uid:any;
+  uidname:any;
+  noShopEntries: boolean=false;
 
   constructor(private breakpointObserver: BreakpointObserver,private dialog:MatDialog,private shopservice:ShopService,public afAuth:AngularFireAuth,public router:Router){
     this.afAuth.authState.subscribe(user => {
-      if(user) this.uid = user.uid
+      if(user){
+        this.uid = user.uid;
+        this.uidname=user.displayName;
+      } 
     }) 
   }
 
-  ngOnInit(): void {
-    this.getAllShops();
+  ngOnInit():void {
+    this.afAuth.authState.subscribe(user => {
+      if(user){
+        this.getAllShops();
+      } 
+    }) 
   }
 
   getAllShops(){
-    this.shopservice.getProduct().subscribe((res:any)=>{
-      this.dataSource=new MatTableDataSource(res);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort=this.sort;
-      this.obs = this.dataSource.connect();
+    this.shopservice.getUserShops().subscribe((res:any)=>{
+      if(res.length===0){
+        this.noShopEntries=true;
+      }
+      else{
+        this.noShopEntries=false;
+        this.dataSource=new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort=this.sort;
+        this.obs = this.dataSource.connect();
+      }
     },error=>{
       alert('Some error occurred while fetching Shops :[')
     })

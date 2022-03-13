@@ -1,6 +1,7 @@
 
 export interface Shop{
-id?:string;
+    id?:string
+uid:string;
 shopName:string,
 shopAddress:string,
 shopImage:string,
