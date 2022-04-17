@@ -36,6 +36,7 @@ export class DialogComponent implements OnInit {
   authState: any = null;
   userName:any;
   userImage:any;
+  editMode=false;
 
   constructor(private afStorage: AngularFireStorage,
     @Inject(MAT_DIALOG_DATA) public editData:any,
@@ -65,9 +66,10 @@ export class DialogComponent implements OnInit {
       userName:['',Validators.required]
     })
     if(this.editData){
+      this.editMode=true;
       this.actionBtn='Update';
-      this.shopForm.controls['userImage'].setValue(this.editData.profileImage);
-      this.shopForm.controls['userName'].setValue(this.editData.profileName);
+      this.shopForm.controls['userImage'].setValue(this.editData.userImage);
+      this.shopForm.controls['userName'].setValue(this.editData.userName);
       this.shopForm.controls['uid'].setValue(this.editData.uid);
       this.shopForm.controls['shopName'].setValue(this.editData.shopName);
       this.shopForm.controls['shopAddress'].setValue(this.editData.shopAddress);

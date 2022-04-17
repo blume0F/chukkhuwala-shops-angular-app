@@ -12,4 +12,3 @@ export const environment = {
     measurementId: 'Put your configs here to work',
   },
 };
-

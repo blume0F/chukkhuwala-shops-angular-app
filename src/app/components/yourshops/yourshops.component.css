@@ -94,7 +94,7 @@ display: block;
 .postedby-heading{
 display:inline-flex;
 padding-bottom:2px;
-padding-top:14px;
+padding-top:30px;
 }
 
 .postedby-image{
@@ -103,7 +103,7 @@ margin-top:-5px;
 }
 
 .shop-image-section{
-height: 100%; 
+max-height: 500px;
 width: 100%;
 object-fit: contain;
 margin: auto;

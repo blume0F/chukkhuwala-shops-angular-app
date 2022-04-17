@@ -14,13 +14,24 @@
       <mat-icon matSuffix>place</mat-icon>
     </mat-form-field>
 
-    <div class="container">
+    <div class="container" *ngIf="!editMode">
       <div class="card">
         <div class="card-header">
           Upload a image of your shop.
         </div>
         <div class="card-body">
           <h5 class="card-title">Select a file for upload:</h5>
+          <input id="file-upload" type="file" (change)="upload($event)" accept="image/*"/>
+        </div>
+      </div>
+    </div><br>
+
+    <div class="container" *ngIf="editMode">
+      <div class="card">
+        <div class="card-header" style="  margin-bottom:5px;color: rgb(211, 107, 32);">
+          Shop image already uploaded. Update?
+        </div>
+        <div class="card-body">
           <input id="file-upload" type="file" (change)="upload($event)" accept="image/*"/>
         </div>
       </div>
