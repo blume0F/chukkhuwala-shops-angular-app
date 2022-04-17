@@ -1,14 +1,14 @@
-# Chukkhuwala
+# Chukkhuwala-Shops
+Angular CRUD application built using angular-material, firebase & angular. Users can post their shops details, search for their shops, implementation of paginator to navigate to next page. App also include `My Shops` section where users can see the shops posted by the them, and only the origin creater of the post can edit or delete their post. Go see it live on https://chukkhuwala.web.app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+# Setup
+Hit `npm install` to install all the dependencies. And put your own firebase config in environment.ts and environment.prod.ts files for the application to communicate to backend using firebase. 
 
 ## Development server
 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
@@ -24,4 +24,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Feel free to contribute to the project, any feedback of any kind would be highly appreciated.
